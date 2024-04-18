@@ -31,7 +31,6 @@
         <item name="android:textSize">15sp</item> <!-- Changed to sp for better scalability -->
     </style>
 
-
     <style name="etOne">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
