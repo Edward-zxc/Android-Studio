@@ -1,5 +1,6 @@
 package com.example.lab01;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,41 +8,48 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    //商品名称与价格数据集合
-    private String[] titles = {"桌子", "苹果", "蛋糕", "线衣", "猕猴桃", "围巾"};
-    private String[] prices = {"1800元", "10元/kg", "300元", "350元", "10元/kg",
-            "280元"};
-    //图片数据集合
-    private int[] icons = {R.drawable.table, R.drawable.apple, R.drawable.cake,
-            R.drawable.wireclothes, R.drawable.kiwifruit, R.drawable.scarf};
+    private final String[] titles = {"手撕面包", "华夫饼", "小麻花", "每日坚果", "盐焗鸡蛋"};
+    private final String[] prices = {"￥32.90", "￥36.90", "￥18.80", "￥19.90", "￥30.70"};
+    private final String[] shops = {"良品铺子旗舰店", "百草味旗舰店", "比比赞旗舰店", "憨豆熊旗舰店", "无穷旗舰店"};
+    private final int[] icons = {R.drawable.tear_bread, R.drawable.waffle,R.drawable.dough_twist, R.drawable.daily_nuts,
+            R.drawable.meat_floss};
     ListView listView;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        listView =findViewById(R.id.listview);
-        MyAdapater myAdapater = new MyAdapater();
-        listView.setAdapter(myAdapater);
+        listView = findViewById(R.id.listview);
+        MyAdapter myAdapter = new MyAdapter();
+        listView.setAdapter(myAdapter);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String price = prices[position];
+            Toast.makeText(MainActivity.this, "Price: " + price, Toast.LENGTH_SHORT).show();
+        });
     }
-    class MyAdapater extends BaseAdapter{
+
+    class MyAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return strinfo.length;
+            return titles.length;
         }
 
         @Override
@@ -55,15 +63,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-           View view1 = View.inflate(MainActivity.this.R.layout.listitem,null);
-           TextView tv_title = view1.findViewById(R.id.title);
-           TextView tv_price = view1.findViewById(R.id.price);
-            ImageView iv =view1.findViewById(R.id.iv);
-            tv_price.setText(price[i]);
-            tv_title.setText(titles[i]);
-            iv.setBackgroundResource(icons[i]);
-            return view1
+        public View getView(int position, View convertView, ViewGroup parent) {
+            @SuppressLint("ViewHolder") View view1 = View.inflate(MainActivity.this, R.layout.lsiiitem, null);
+            TextView tv_title = view1.findViewById(R.id.title);
+            TextView tv_price = view1.findViewById(R.id.price);
+            TextView tv_shop = view1.findViewById(R.id.shop);
+            ImageView iv = view1.findViewById(R.id.iv);
+            tv_price.setText(prices[position]);
+            tv_title.setText(titles[position]);
+            tv_shop.setText(shops[position]);
+            iv.setImageResource(icons[position]);
+            return view1;
         }
     }
 }
