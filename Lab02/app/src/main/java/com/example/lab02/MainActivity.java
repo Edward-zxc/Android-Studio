@@ -1,7 +1,9 @@
 package com.example.lab02;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.i("MainActivity","onCreate方法被调用了");
     }
+    public void open(View view){
+        Intent intent = new Intent(this,SecondActivity.class);
+        startActivity(intent);
+    }
+
     protected void onStart(){
         super.onStart();
         Log.i("MainActivity","onStart方法被调用了");
