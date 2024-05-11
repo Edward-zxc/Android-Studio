@@ -4,41 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
 public class MainActivity extends AppCompatActivity {
+    private EditText et_name,et_sno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("MainActivity","onCreate方法被调用了");
+        et_name = findViewById(R.id.et_name);
+        et_sno = findViewById(R.id.et_sno);
     }
-    public void open(View view){
-        Intent intent = new Intent(this,SecondActivity.class);
-        startActivity(intent);
-    }
+    // Register
+    public void register(View view) {
+        Intent intent = new Intent(this,ShowInfoActivity.class);
+        String strName = et_name.getText().toString().trim();
+        String strSno = et_sno.getText().toString().trim();
+        intent.putExtra("name",strName);
+        intent.putExtra("sno",strSno);
 
-    protected void onStart(){
-        super.onStart();
-        Log.i("MainActivity","onStart方法被调用了");
-    }
-    protected void onResume(){
-        super.onResume();
-        Log.i("MainActivity","onResume方法被调用了");
-    }
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.i("MainActivity","onDestroy方法被调用了");
-    }
-    protected void onStop(){
-        super.onStop();
-        Log.i("MainActivity","onStop方法被调用了");
-    }
-    protected void onRestart(){
-        super.onRestart();
-        Log.i("MainActivity","onRestart方法被调用了");
+        startActivity(intent);
     }
 }
