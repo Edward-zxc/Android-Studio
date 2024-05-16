@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void open2(View view) {
         Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
+        startActivityForResult(intent, 12);
     }
 
     @Override
@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 12 && resultCode == 21){
             String strData = data.getStringExtra("title");
-            Toast.makeText(MainActivity.this, strData, Toast.LENGTH_SHORT).show();
+            String name = data.getStringExtra("name");
+            Toast.makeText(MainActivity.this, strData + " Name: " + name, Toast.LENGTH_LONG).show();
         }
     }
 }

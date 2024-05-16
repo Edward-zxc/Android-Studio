@@ -3,6 +3,7 @@ package com.example.lab03;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +25,13 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
     public void return1(View view) {
-        //return to the previous activity
+        EditText etName = findViewById(R.id.et_name);
+        String name = etName.getText().toString();
+
         Intent intentData = new Intent();
         intentData.putExtra("title", "  Data from Activity 2");
+        intentData.putExtra("name", name);
         setResult(21,intentData);
-        finish();//close the current page
+        finish();
     }
 }
