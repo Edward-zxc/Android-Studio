@@ -1,40 +1,45 @@
 package com.example.lab03;
 
+
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity2 extends AppCompatActivity {
-    private EditText nameInput;
-    private EditText companyInput;
-    private EditText phoneInput;
-    private EditText emailInput;
-    private Button doneButton;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+public class  MainActivity2 extends Activity{
+    private Button btFinish;
+    private EditText etName,etCompany,etNumber,etEmail;
+    protected  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_main2);
+        init();
+    }
 
-        nameInput = findViewById(R.id.name_input);
-        companyInput = findViewById(R.id.company_input);
-        phoneInput = findViewById(R.id.phone_input);
-        emailInput = findViewById(R.id.email_input);
-        doneButton = findViewById(R.id.done_button);
-
-        doneButton.setOnClickListener(new View.OnClickListener() {
+    private void init(){
+        etName = findViewById(R.id.et_name);
+        etCompany = findViewById(R.id.et_company);
+        etNumber = findViewById(R.id.et_number);
+        etEmail = findViewById(R.id.et_email);
+        btFinish = findViewById(R.id.btFinish);
+        etName.setTextColor(Color.GRAY);
+        etNumber.setTextColor(Color.GRAY);
+        etEmail.setTextColor(Color.GRAY);
+        etCompany.setTextColor(Color.GRAY);
+        btFinish.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                String info = nameInput.getText().toString() + "\n" +
-                        companyInput.getText().toString() + "\n" +
-                        phoneInput.getText().toString() + "\n" +
-                        emailInput.getText().toString();
-                Intent intent = new Intent();
-                intent.putExtra("info", info);
-                setResult(RESULT_OK, intent);
+            public  void onClick(View v){
+                String name = etName.getText().toString();
+                String number = etNumber.getText().toString();
+                String email = etEmail.getText().toString();
+                Intent intent = new Intent(MainActivity2.this,MainActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("number",name);
+                intent.putExtra("email",name);
+                intent.putExtra("result","success");
+                setResult(RESULT_OK,intent);
                 finish();
             }
         });

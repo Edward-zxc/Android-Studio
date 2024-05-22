@@ -1,38 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#ffffff">
 
-    <EditText
-        android:id="@+id/name_input"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/company_input"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="NewsContacts"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:textSize="20sp"
+           />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+
+            android:text="新建联系人"
+
+            android:textSize="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+           ><ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/head" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="姓名："
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_company"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/bg"
+                        android:hint="Xiang chun Zhou"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="公司或标签："
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                         />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/bg"
+                        android:hint="NIT"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="电话"
+            android:textSize="17dp"
+            android:textColor="#000000"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="3px"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:text="手机："
+                />
+
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:hint="18888888888"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="邮箱"
+            android:layout_marginLeft="10dp"
+            android:textSize="17dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+
+            android:layout_marginTop="5dp"
+            android:layout_height="3px"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:text="公司："
+                />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="#dd"
+                android:hint="00000001@ntit.edu.cn"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Company" />
+        android:layout_height="70dp"
+        android:gravity="center_vertical|right"
+        android:paddingRight="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
 
-    <EditText
-        android:id="@+id/phone_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone" />
+        <Button
+            android:id="@+id/btFinish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="完成"
 
-    <EditText
-        android:id="@+id/email_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email" />
+            android:textSize="20dp"/>
 
-    <Button
-        android:id="@+id/done_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done" />
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
