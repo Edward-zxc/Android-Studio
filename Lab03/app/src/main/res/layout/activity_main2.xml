@@ -175,7 +175,6 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:textColor="#dd"
                 android:hint="00000001@ntit.edu.cn"/>
 
         </LinearLayout>
